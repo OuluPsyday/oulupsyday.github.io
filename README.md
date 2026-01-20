@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Psyday</title>
 </head>
+
 <body>
 <p># WORK IN PROGRESS #</p>
 <p>Sivustoa rakennetaan 24/7, full release coming soon™.</p>
+</body>
 
 <body>
 <h1>Psyday 14.03.26</h1>
@@ -25,6 +28,7 @@
 <p>Tammikuussa ilmoittautuneille ja maksaneille pieni bonus ovella!</p>
 </body>
 
+<body>
 <p>Yhteydenotot: jyri.seppa@oulu.ug</p>
 </body>
 </html>
