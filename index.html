@@ -1,22 +1,340 @@
 <!DOCTYPE html>
-<html>
+<html lang="fi">
     <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Metkut, Psykekokki">
         <title>Psyday</title>
+        <style>
+            body {
+                background-color: black;
+                font-family: 'Courier New', Courier, monospace;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                color: white;
+            }
+
+            .info-laatikko {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('assets/tausta.webp');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+
+                border: 2px solid #00ff00;
+                border-radius: 15px;
+                padding: 40px;
+                max-width: 650px;
+                width: 90%;
+                text-align: center;
+                box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+                margin: 20px 0;
+            }
+
+            .posteri-kuva {
+                max-width: 100%;
+                height: auto;
+                margin-bottom: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 15px rgba(0,0,0,0.8);
+            }
+
+            h1 {
+                text-transform: uppercase;
+                letter-spacing: 5px;
+                color: #00ff00;
+                font-size: 2.5em;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                text-shadow: 0 0 10px #00ff00;
+            }
+
+            h2, h3 {
+                text-transform: uppercase;
+                color: #fff;
+            }
+            
+            h2 {
+                margin-bottom: 25px;
+                border-bottom: 1px solid #333;
+                display: inline-block;
+                padding-bottom: 5px;
+            }
+
+            .fakta-rivit {
+                text-align: left;
+                background-color: rgba(0, 255, 0, 0.05);
+                padding: 15px;
+                border-radius: 8px;
+                border: 1px solid #333;
+                margin-bottom: 30px;
+                line-height: 1.8;
+            }
+
+            .fakta-rivit p {
+                margin: 8px 0;
+            }
+
+            .bonus-info {
+                display: block;
+                font-size: 0.9em;
+                color: #00ff00;
+                font-style: italic;
+                margin-top: 2px;
+            }
+
+            .aikataulu {
+                text-align: left;
+                margin: 30px 0;
+                padding: 0 10px;
+            }
+            
+            .aikataulu-header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .phase {
+                margin-bottom: 30px;
+                padding: 15px;
+                border-radius: 8px;
+                background-color: rgba(255, 255, 255, 0.03);
+            }
+
+            .phase h3 {
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 15px;
+                font-size: 1.3em;
+            }
+
+            .phase-day h3 { color: #ffffaa; text-shadow: 0 0 8px rgba(255, 255, 0, 0.6); }
+            .phase-twilight h3 { color: #40e0d0; text-shadow: 0 0 8px rgba(64, 224, 208, 0.6); } 
+            .phase-night h3 { color: #d800ff; text-shadow: 0 0 8px rgba(216, 0, 255, 0.6); }
+
+            .slot-row {
+                margin-bottom: 15px;
+                border-left: 2px solid #333;
+                padding-left: 10px;
+            }
+
+            .time-slot {
+                font-size: 1.1em;
+                font-weight: bold;
+                color: #fff;
+                display: block;
+            }
+            
+            .artist-inline {
+                color: #eee;
+            }
+
+            .genre-desc {
+                font-size: 0.85em;
+                color: #aaa;
+                font-style: italic;
+                display: block;
+                margin-top: 4px;
+            }
+
+            .artistit {
+                margin-top: 30px;
+                text-align: left;
+            }
+            
+            .artistit h3 {
+                color: #00ff00;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .artistit ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .artistit li {
+                margin-bottom: 15px;
+                border-bottom: 1px solid #333;
+                padding-bottom: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .artist-header {
+                font-weight: bold;
+                font-size: 1.1em;
+                color: white;
+            }
+
+            a {
+                color: #00ff00;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            a:hover {
+                color: white;
+                text-decoration: underline;
+                text-shadow: 0 0 5px white;
+            }
+            
+            .sc-link {
+                font-size: 0.85em;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-left: auto;
+            }
+
+            hr {
+                border-color: #333;
+                margin: 30px 0;
+            }
+
+            .akpk-logo {
+                display: block;
+                margin: 30px auto 0 auto;
+                width: 100%;
+                height: auto;
+                max-width: 180px;
+                opacity: 0.9;
+            }
+        </style>
     </head>
     <body>
-        <p>Sivusto on rakenteilla. Lopullinen julkaisu tapahtuu pian™</p>
-    <h1>Psyday</h1>
-        <p>Mitä: Psykepäikkärit, päivä pelkkää psykeä</p>
-        <p>Missä: Toistaiseksi salainen (alle 3km säteellä Toripolliisista)</p>
-        <p>Milloin: 14.03.26 klo 14:00 - 22:00</p>
-        <p>Kuka: Oulun kovimmat psykepäät ja SINÄ</p>
-    <hr>
-        <p>Tukimaksu:</p>
-        <p>Tammikuu 18€</p>
-        <p>Helmikuu 20€</p>
-        <p>Maaliskuu 25€</p>
-        <p>Tammikuussa ilmoittautuneille ja maksaneille pieni bonus ovella!</p>
-    <hr>
-        <p>Yhteydenotot: <mark>jyri.seppa@oulu.ug</mark></p>
+
+        <div class="info-laatikko">
+            
+            <img src="assets/posteri.webp" alt="Psyday tapahtumaposteri" class="posteri-kuva">
+
+            <h1>Psyday</h1>
+            
+            <div class="fakta-rivit">
+                <p><strong>Mitä:</strong> Psykepäikkärit, päivä pelkkää psykeä</p>
+                <p><strong>Missä:</strong> Telakka / Pitkänmöljäntie 8</p>
+                <p><strong>Milloin:</strong> 14.03.26 klo 14:00 - 22:00</p>
+                
+                <p style="border-top: 1px dashed #555; padding-top: 10px; margin-top: 10px;">
+                    <strong>Tukimaksu:</strong> Tammikuu 18€ / Helmikuu 20€ / Maaliskuu 25€
+                    <span class="bonus-info">➜ Tammikuussa maksaneille bonus ovella!</span>
+                </p>
+            </div>
+            
+            <hr>
+
+            <div class="aikataulu">
+                <div class="aikataulu-header">
+                    <h2>Ohjelma</h2>
+                </div>
+
+                <div class="phase phase-day">
+                    <h3>☀ Päivä nousee ☀</h3>
+                    
+                    <div class="slot-row">
+                        <span class="time-slot">14:00 - 15:30 <span class="artist-inline">Aida</span></span>
+                        <span class="genre-desc">Psytrance TAHDISTUS</span>
+                    </div>
+                    
+                    <div class="slot-row">
+                        <span class="time-slot">15:30 - 17:00 <span class="artist-inline">Abstract Impulse</span></span>
+                        <span class="genre-desc">Progressive & Full-On SYKE</span>
+                    </div>
+                </div>
+
+                <div class="phase phase-twilight">
+                    <h3>☀ Ilta saapuu ☾</h3>
+                    
+                    <div class="slot-row">
+                        <span class="time-slot">17:00 - 19:00 <span class="artist-inline" id="b2b-nimet">Wiola B2B Icarus</span></span>
+                        <span class="genre-desc">Päivä päättyy, yö koittaa ja PULSSI kiihtyy</span>
+                    </div>
+                </div>
+
+                <div class="phase phase-night">
+                    <h3>☾ Yö laskeutuu ☾</h3>
+                    
+                    <div class="slot-row">
+                        <span class="time-slot">19:00 - 20:30 <span class="artist-inline">Deidriim</span></span>
+                        <span class="genre-desc">Darkpsy RYTMIHÄIRIÖ</span>
+                    </div>
+
+                    <div class="slot-row">
+                        <span class="time-slot">20:30 - 22:00 <span class="artist-inline">Metkut</span></span>
+                        <span class="genre-desc">Hi-Tech KAMMIOVÄRINÄ</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="artistit">
+                <h3>Artistit & Soundcloud</h3>
+                <ul id="shuffle-list">
+                    
+                    <li>
+                        <span class="artist-header">Metkut</span>
+                        <a href="https://soundcloud.com/metkut" target="_blank" class="sc-link">SoundCloud ➜</a>
+                    </li>
+
+                    <li>
+                        <span class="artist-header">Deidriim</span>
+                        <a href="https://soundcloud.com/deidriim" target="_blank" class="sc-link">SoundCloud ➜</a>
+                    </li>
+
+                    <li>
+                        <span class="artist-header">Abstract Impulse</span>
+                        <a href="https://soundcloud.com/sswitche" target="_blank" class="sc-link">SoundCloud ➜</a>
+                    </li>
+
+                    <li>
+                        <span class="artist-header">Icarus</span>
+                        <a href="https://soundcloud.com/icarus-fi" target="_blank" class="sc-link">SoundCloud ➜</a>
+                    </li>
+
+                    <li>
+                        <span class="artist-header">Wiola</span>
+                        <a href="https://soundcloud.com/djwiola" target="_blank" class="sc-link">SoundCloud ➜</a>
+                    </li>
+
+                    <li>
+                        <span class="artist-header">Aida</span>
+                        <a href="https://soundcloud.com/dj-aida" target="_blank" class="sc-link">SoundCloud ➜</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <hr>
+            
+            <p>Yhteydenotot:<br> 
+            <a href="mailto:metkut@oulu.ug">metkut@oulu.ug</a></p>
+
+            <img src="assets/akpk.webp" alt="AKPK Logo" class="akpk-logo">
+
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                
+                // 1. SEKOITETAAN ALIMMAINEN ARTISTILISTA
+                var ul = document.querySelector('#shuffle-list');
+                for (var i = ul.children.length; i >= 0; i--) {
+                    ul.appendChild(ul.children[Math.random() * i | 0]);
+                }
+
+                // 2. SEKOITETAAN WIOLA JA ICARUS (B2B)
+                var b2bElement = document.getElementById('b2b-nimet');
+                if (Math.random() < 0.5) {
+                    b2bElement.textContent = "Icarus B2B Wiola";
+                } else {
+                    b2bElement.textContent = "Wiola B2B Icarus";
+                }
+
+            });
+        </script>
+
     </body>
 </html>
