@@ -50,6 +50,16 @@
                 text-shadow: 0 0 10px #00ff00;
             }
 
+            .laskuri {
+                font-size: 1.5em;
+                font-weight: bold;
+                color: white;
+                margin-top: -15px; /* Vedetään vähän lähemmäs otsikkoa */
+                margin-bottom: 30px;
+                text-shadow: 0 0 10px #00ff00; /* Sama hehku kuin otsikossa */
+                letter-spacing: 2px;
+            }
+
             h2, h3 {
                 text-transform: uppercase;
                 color: #fff;
@@ -211,6 +221,8 @@
             <img src="assets/posteri.webp" alt="Psyday tapahtumaposteri" class="posteri-kuva">
 
             <h1>Psyday</h1>
+
+            <div id="countdown" class="laskuri">Ladataan aikaa...</div>
             
             <div class="fakta-rivit">
                 <p><strong>Mitä:</strong> Psykepäikkärit, päivä pelkkää psykeä</p>
@@ -346,6 +358,34 @@
                 } else {
                     b2bElement.textContent = "Wiola B2B Icarus";
                 }
+
+                // 3. COUNTDOWN LASKURI (14.03.2026 klo 14:00)
+                // Asetetaan päivämäärä: Vuosi, Kuukausi (2=Maaliskuu), Päivä, Tunti
+                var targetDate = new Date(2026, 2, 14, 14, 0, 0).getTime();
+
+                var timer = setInterval(function() {
+                    var now = new Date().getTime();
+                    var distance = targetDate - now;
+
+                    // Lasketaan päivät, tunnit, minuutit, sekunnit
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // Näytetään tulos (lisätään nollat eteen jos luku on alle 10)
+                    document.getElementById("countdown").innerHTML = 
+                        days + "d " + 
+                        (hours < 10 ? "0" + hours : hours) + "h " + 
+                        (minutes < 10 ? "0" + minutes : minutes) + "m " + 
+                        (seconds < 10 ? "0" + seconds : seconds) + "s";
+
+                    // Jos aika meni jo
+                    if (distance < 0) {
+                        clearInterval(timer);
+                        document.getElementById("countdown").innerHTML = "PARTY ON!";
+                    }
+                }, 1000);
 
             });
         </script>
